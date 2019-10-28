@@ -1,0 +1,19 @@
+{
+     "application.shortName" : "NeoTV",
+     "application.longName" : "NeoTV Navigator",
+     
+     "application.dark" : "Dark",
+     "application.search" : "Search...",
+     "application.loadMore" : "Load more",
+
+     "menu.movie": "Movies",
+     "menu.sport": "Sports",
+     "menu.cartoon": "Cartoons",
+
+     "media.launch": "Launch",
+     "media.preview": "Preview",
+     "media.stop": "Stop",
+     "media.summary": "Summary",
+     "media.showMore": "Show more"
+
+}

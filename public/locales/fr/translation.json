@@ -1,0 +1,18 @@
+{
+   "application.shortName" : "NeoTV",
+   "application.longName" : "Navigateur NeoTV",
+
+   "application.dark" : "Sombre",
+   "application.search" : "Rechercher...",
+   "application.loadMore" : "Voir plus",
+
+   "menu.movie": "Films",
+     "menu.sport": "Sports",
+     "menu.cartoon": "Animés",
+
+     "media.launch": "Démarrer",
+     "media.preview": "Aperçu",
+     "media.stop": "Arrêter",
+     "media.summary": "Résumé",
+     "media.showMore": "Voir plus"
+}

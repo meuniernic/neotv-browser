@@ -1,0 +1,90 @@
+{
+    "name": "Sports",
+    "type": "SPORTS",
+    "streams": [
+{
+    "title": "Canal+ Sport",
+    "url": "http://nkdn.redi-vo.com/iptv/ch202?code=XXX&key=12497"
+    },
+    {
+    "title": "EuroSport 1 HD",
+    "url": "http://nkdn.redi-vo.com/iptv/ch743?code=XXX&key=61896"
+    },
+    {
+    "title": "EuroSport 2 HD",
+    "url": "http://nkdn.redi-vo.com/iptv/ch744?code=XXX&key=52699"
+    },
+    {
+    "title": "Infosport HD",
+    "url": "http://nkdn.redi-vo.com/iptv/ch250?code=XXX&key=20636"
+    },
+    {
+    "title": "BFM Sport HD",
+    "url": "http://nkdn.redi-vo.com/iptv/ch244?code=XXX&key=20406"
+    },
+    {
+    "title": "Eleven Sport 1 Fr.",
+    "url": "http://nkdn.redi-vo.com/iptv/ch1648?code=XXX&key=36192"
+    },
+    {
+    "title": "Eleven Sport 2 Fr.",
+    "url": "http://nkdn.redi-vo.com/iptv/ch1649?code=XXX&key=31399"
+    },
+    {
+    "title": "RMC Sport 1 HD",
+    "url": "http://nkdn.redi-vo.com/iptv/ch255?code=XXX&key=33325"
+    },
+    {
+    "title": "RMC Sport 2 HD",
+    "url": "http://nkdn.redi-vo.com/iptv/ch253?code=XXX&key=24152"
+    },
+    {
+    "title": "RMC Sport 3 HD",
+    "url": "http://nkdn.redi-vo.com/iptv/ch254?code=XXX&key=24038"
+    },
+    {
+    "title": "RMC Sport 4 HD",
+    "url": "http://nkdn.redi-vo.com/iptv/ch243?code=XXX&key=53486"
+    },
+    {
+    "title": "BeInSport 1 FR",
+    "url": "http://nkdn.redi-vo.com/iptv/ch119?code=XXX&key=59333"
+    },
+    {
+    "title": "BeInSport 2 FR",
+    "url": "http://nkdn.redi-vo.com/iptv/ch120?code=XXX&key=14572"
+    },
+    {
+    "title": "BeInSport 3 FR",
+    "url": "http://nkdn.redi-vo.com/iptv/ch206?code=XXX&key=60091"
+    },
+    {
+    "title": "BeInSport Max 4",
+    "url": "http://nkdn.redi-vo.com/iptv/ch340?code=XXX&key=52026"
+    },
+    {
+    "title": "BeInSport Max 5",
+    "url": "http://nkdn.redi-vo.com/iptv/ch341?code=XXX&key=27374"
+    },
+    {
+    "title": "BeInSport Max 6",
+    "url": "http://nkdn.redi-vo.com/iptv/ch342?code=XXX&key=55855"
+    },
+    {
+    "title": "BeInSport Max 7",
+    "url": "http://nkdn.redi-vo.com/iptv/ch343?code=XXX&key=64447"
+    },
+    {
+    "title": "BeInSport Max 8",
+    "url": "http://nkdn.redi-vo.com/iptv/ch344?code=XXX&key=36430"
+    },
+    {
+    "title": "BeInSport Max 9",
+    "url": "http://nkdn.redi-vo.com/iptv/ch345?code=XXX&key=28557"
+    },
+    {
+    "title": "BeInSport Max 10",
+    "url": "http://nkdn.redi-vo.com/iptv/ch346?code=XXX&key=27423"
+    }
+]
+}
