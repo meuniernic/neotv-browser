@@ -1,35 +1,15 @@
 import React from "react";
 import { fade, withStyles } from "@material-ui/core/styles";
 import { withTranslation } from "react-i18next";
+import { withRouter } from "react-router-dom";
 import { blue } from "@material-ui/core/colors";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import {AppBar, Tabs, Tab, Toolbar, IconButton, Typography, InputBase} from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import {
-  HomeOutlined,
-  SportsSoccer,
-  Movie,
-  Reddit,
-  Search,
-  Tv
-} from "@material-ui/icons";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import {HomeOutlined,SportsSoccer,Movie,Reddit,Search,Tv, Brightness2} from "@material-ui/icons";
 import * as d3 from "d3";
 import * as util from "../util.js";
 
-
-function a11yProps(index) {
-  return {
-    id: `scrollable-prevent-tab-${index}`,
-    "aria-controls": `scrollable-prevent-tabpanel-${index}`
-  };
-}
+const routes = ["/tv", "/sport", "/movie", "/cartoon"];
 
 class Header extends React.Component {
   constructor(props) {
@@ -44,12 +24,33 @@ class Header extends React.Component {
     this.handleMenuItemChange = this.handleMenuItemChange.bind(this);
     this.toggleDarkChecked = this.toggleDarkChecked.bind(this);
     this.handleChangeSearch = this.handleChangeSearch.bind(this);
+
+  }
+
+  componentDidMount() {
+    if (this.props.history) {
+      var index = routes.indexOf(this.props.history.location.pathname);
+      console.log(this.props.history.location.pathname);
+      if (index<0) 
+        index = 0;
+      this.setState({menuItem: index});   
+    }
   }
 
   handleMenuItemChange = (event, newValue) => {
     this.setState({ menuItem: newValue });
+    this.navigate(routes[newValue]);
   };
 
+  handleNavigateHome = (event) => {
+    this.setState({ menuItem: 0 });
+    this.navigate(routes[0]);
+  };
+
+  navigate(route) {
+    if(this.props.history) this.props.history.push(route);
+  };
+    
   toggleDarkChecked = () => {
     this.props.callbackToggleTheme();
     this.setState({ darkChecked: !this.state.darkChecked });
@@ -71,6 +72,7 @@ class Header extends React.Component {
     }
   };
 
+
   render() {
     const { t  } = this.props;
     return (
@@ -80,9 +82,9 @@ class Header extends React.Component {
           <Toolbar>
             <IconButton
               edge="start"
-              className={this.props.classes.menuButton}
               color="inherit"
               aria-label="Home"
+              onClick={this.handleNavigateHome}
             >
               <HomeOutlined />
             </IconButton>
@@ -120,44 +122,31 @@ class Header extends React.Component {
                   icon={<Tv />}
                   label={t("menu.tv")}
                   aria-label="TV"
-                  {...a11yProps(0)}
-                  to="/tv"
-                />
+                >
+                </Tab>
                 <Tab
                   icon={<SportsSoccer />}
                   label={t("menu.sport")}
                   aria-label="football"
-                  {...a11yProps(0)}
-                  to="/sport"
                 />
                 <Tab
                   icon={<Movie />}
                   label={t("menu.movie")}
                   aria-label="movies"
-                  {...a11yProps(1)}
-                  to="/movie"
                 />
                 <Tab
                   icon={<Reddit />}
                   label={t("menu.cartoon")}
                   aria-label="cartoon"
-                  {...a11yProps(2)}
-                  to="/cartoon"
                 />
               </Tabs>
             </div>
             <div className={this.props.classes.filler}></div>
             <div className={this.props.classes.root} />
-            <FormControlLabel
-              control={
-                <Switch
-                  size="small"
-                  checked={this.state.darkChecked}
-                  onChange={this.toggleDarkChecked}
-                />
-              }
-              label={t("application.dark")}
-            />
+           
+            <IconButton aria-label={t("application.dark")} onClick={this.toggleDarkChecked} size="medium" color={this.state.darkChecked?"secondary":""}>
+                <Brightness2  />
+            </IconButton>
           </Toolbar>
         </AppBar>
       </div>
@@ -168,6 +157,9 @@ class Header extends React.Component {
 
 export default withStyles(function(theme){
 return {
+  home: {
+    color: "unset"
+  },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     backgroundColor: blue[900]
@@ -220,4 +212,4 @@ return {
     }
   }
 }
-})(withTranslation('translation')(Header));
+})(withTranslation('translation')(withRouter(Header)));

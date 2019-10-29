@@ -44,7 +44,7 @@ export default function App() {
     }
   });
 
-  const toggleTheme = () => {
+  const toggleThemeType = () => {
     let newPaletteType = theme.palette.type === "light" ? "dark" : "light";
     setTheme({
       palette: {
@@ -60,11 +60,11 @@ export default function App() {
     <MuiThemeProvider theme={muiTheme}>
       <Router>
         <div className={classes.root}>
-          <Header callbackToggleTheme={toggleTheme} />
+          <Header callbackToggleTheme={toggleThemeType} />
           <Container maxWidth="xl" id="main" className={classes.main}>
             <main className={clsx(classes.content)}>
               <Switch>
-                <Route path="/" exact component={SportPage} />
+                <Route path="/" exact component={TvPage} />
                 <Route path="/tv" exact component={TvPage} />
                 <Route path="/sport" exact component={SportPage} />
                 <Route path="/movie" exact component={MoviePage} />

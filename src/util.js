@@ -1,8 +1,8 @@
-import { properties } from './properties.js';
+import config from './config/config.js';
 import Fuse from "fuse.js";
 
 function buildUrl(category) {
-    return properties.baseurl + category + '?' + properties.code_param + '=' + properties.neotv_id;
+    return config.neotv.baseurl + category + '?' + config.neotv.code_param + '=' + config.neotv.key;
 }
 
 export function fuseSearchIcon(data, keyword) {
@@ -40,5 +40,5 @@ export function getTvUrl() {
 }
 
 export function getSearchUrl(key, type) {
-    return buildUrl(properties.urls.search) + '&name=' + key + (type ? '&type=' + type : '');
+    return buildUrl(config.neotv.urls.search) + '&name=' + key + (type ? '&type=' + type : '');
 }
