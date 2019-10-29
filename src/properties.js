@@ -3,7 +3,8 @@ export const properties = {
     urls: {
         sports: "sport",
         movies: "movies",
-        cartoons: "cartoons"
+        cartoons: "cartoons",
+        search: "search"
     },
     code_param: "code",
     neotv_id: "207133766674940"

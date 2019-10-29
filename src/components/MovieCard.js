@@ -13,13 +13,14 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {PlayCircleOutline, PauseCircleFilled, ExpandMore, OpenInNew} from '@material-ui/icons';
+import * as util from "../util.js";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    width: 350
+    width: 285
   },
   media: {
-    height: 200,
+    height: 320,
   },
   text: {
     height: 90
@@ -79,7 +80,7 @@ export default function MediaCard(props) {
           </CardMedia>
         <CardContent className={classes.text}>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.cardIntroText}
+            {util.wrapText(props.cardText)}
           </Typography>
         </CardContent>
       </CardActionArea>

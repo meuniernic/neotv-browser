@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import SportPage from "./pages/Sport";
 import CartoonPage from "./pages/Cartoon";
 import MoviePage from "./pages/Movie";
+import TvPage from "./pages/Tv";
 
 import "./App.css";
 
@@ -64,6 +65,7 @@ export default function App() {
             <main className={clsx(classes.content)}>
               <Switch>
                 <Route path="/" exact component={SportPage} />
+                <Route path="/tv" exact component={TvPage} />
                 <Route path="/sport" exact component={SportPage} />
                 <Route path="/movie" exact component={MoviePage} />
                 <Route path="/cartoon" exact component={CartoonPage} />

@@ -2,7 +2,7 @@ import { properties } from './properties.js';
 import Fuse from "fuse.js";
 
 function buildUrl(category) {
-    return properties.baseurl + category + '/' + properties.code_param + '=' + properties.neotv_id;
+    return properties.baseurl + category + '?' + properties.code_param + '=' + properties.neotv_id;
 }
 
 export function fuseSearchIcon(data, keyword) {
@@ -32,4 +32,13 @@ export function getMovieUrl() {
 export function getCartoonUrl() {
     //return buildUrl(properties.urls.cartoons);
     return "http://localhost:3000/cartoons.json";
+}
+
+export function getTvUrl() {
+    //return buildUrl(properties.urls.);
+    return "http://localhost:3000/tv.json";
+}
+
+export function getSearchUrl(key, type) {
+    return buildUrl(properties.urls.search) + '&name=' + key + (type ? '&type=' + type : '');
 }

@@ -1,15 +1,16 @@
 import React, { Suspense } from "react";
 import Grid from "@material-ui/core/Grid";
-import MovieCard from "../components/MovieCard";
+import MediaCard from "../components/ChannelCard";
 import * as d3 from "d3";
 import * as util from "../util.js";
 
-class Cartoon extends React.Component {
+class Tv extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      cartoons: []
+      isLoading: true,
+      channels: []
     };
   }
 
@@ -17,9 +18,9 @@ class Cartoon extends React.Component {
     // Load async data.
     // Update state with new data.
     // Re-render our component.
-    Promise.all([d3.json(util.getCartoonUrl())])
-      .then(([data]) => {
-        this.setState({ cartoons: data.streams });
+    Promise.all([d3.json(util.getTvUrl())])
+      .then(([channels]) => {
+        this.setState({ channels: channels.streams });
       })
       .catch(err => console.log("Error loading data"));
   }
@@ -35,19 +36,17 @@ class Cartoon extends React.Component {
               justify="center"
               alignItems="center"
               spacing={4}
-              id="CartoonGrid"
+              id="tvGrid"
             >
-              {this.state.cartoons.map((value, index) => {
-                const itemId = "item-" + index;
+              {this.state.channels.map((value, index) => {
+                const labelId = `checkbox-list-secondary-label-${index}`;
                 return (
-                  <Grid item key={itemId}>
-                    <MovieCard
+                  <Grid item key={labelId}>
+                    <MediaCard
                       imageUrl={value.image}
                       imageTitle={value.title}
                       cardTitle={value.title}
-                      cardDate={value.date}
-                      cardIntroText={util.wrapText(value.overview)}
-                      cardText={value.overview}
+                      cardText={value.title}
                       link={value.url}
                     />
                   </Grid>
@@ -61,4 +60,4 @@ class Cartoon extends React.Component {
   }
 }
 
-export default Cartoon;
+export default Tv;

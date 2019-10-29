@@ -6,7 +6,8 @@
    "application.search" : "Rechercher...",
    "application.loadMore" : "Voir plus",
 
-   "menu.movie": "Films",
+     "menu.tv": "TV",
+     "menu.movie": "Films",
      "menu.sport": "Sports",
      "menu.cartoon": "Animés",
 
