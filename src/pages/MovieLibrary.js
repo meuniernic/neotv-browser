@@ -36,14 +36,14 @@ class MovieLibrary extends React.Component {
   }
 
   isShowing() {
-    return this.state.video !== null;
+    return this.state.video != null;
   }
 
   stopVideo() {
     this.setState({ video: null });
   }
 
-  startVideo = newValue => {
+  startVideo = (newValue) => {
     this.setState({ video: newValue });
   };
 
@@ -79,22 +79,20 @@ class MovieLibrary extends React.Component {
             !this.isShowing() && this.props.classes.hide
           )}
         >
+          <video 
+            controls
+            muted
+            width="100%"
+            height="100%"
+            autoPlay
+            preload="auto"
+            src={this.state.video} type="video/mp4">
+          </video>
           <div id="closeButton" className={this.props.classes.closePlayer}>
             <IconButton onClick={this.stopVideo} color="inherit">
               <Close />
             </IconButton>
           </div>
-          <video
-            controls
-            preload="auto"
-            poster=""
-            autoPlay
-            muted
-            width="100%"
-            height="100%"
-          >
-            <source src={this.state.video} type="video/mp4" />
-          </video>
         </div>
         <div
           id="cards"
@@ -138,7 +136,6 @@ class MovieLibrary extends React.Component {
 export default withStyles(function(theme) {
   return {
     player: {
-      height: "100%",
       width: "100%"
     },
     closePlayer: {

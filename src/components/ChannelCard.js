@@ -25,7 +25,7 @@ class ChannelCard extends React.Component {
   };
 
   static defaultProps = {
-    variant: "simple"
+    variant: "full"
   };
 
   constructor(props) {
@@ -46,7 +46,7 @@ class ChannelCard extends React.Component {
             className={this.props.classes.media}
             image={this.props.cover}
             title={this.props.title}
-
+            onClick={this.props.callback}
           />
           <CardContent className={clsx(this.isSimple() && this.props.classes.hide)}>
             <Typography gutterBottom variant="h5">

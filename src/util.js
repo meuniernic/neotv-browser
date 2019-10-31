@@ -6,7 +6,11 @@ function buildUrl(category) {
 }
 
 function buildLanguageUrl(category, language) {
-    return config.neotv.baseurl + category + '?' + config.neotv.code_param + '=' + config.neotv.key + '&' + config.neotv.language_param + '=' + language;
+    var out = config.neotv.baseurl + category + '?' + config.neotv.code_param + '=' + config.neotv.key;
+    if (language !== undefined) {
+        out += + '&' + config.neotv.language_param + '=' + language;
+    }
+    return out;
 }
 
 export function fuseSearchIcon(data, keyword) {
@@ -24,22 +28,22 @@ export function wrapText(text) {
 }
 
 export function getSportUrl() {
-    //return buildUrl(properties.urls.sport);
+    //return buildUrl(config.neotv.urls.sport);
     return "http://localhost:3000/sports.json";
 }
 
 export function getMovieUrl(language) {
-    //return buildLanguageUrl(properties.urls.movie);
+    //return buildLanguageUrl(config.neotv.urls.movie, language);
     return "http://localhost:3000/movies.json";
 }
 
 export function getCartoonUrl(language) {
-    //return buildLanguageUrl(properties.urls.cartoon);
+    //return buildLanguageUrl(config.neotv.urls.cartoon, language);
     return "http://localhost:3000/cartoons.json";
 }
 
 export function getTvUrl() {
-    //return buildUrl(properties.urls.tv);
+    //return buildUrl(config.neotv.urls.tv);
     return "http://localhost:3000/tv.json";
 }
 
