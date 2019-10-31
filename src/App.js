@@ -8,10 +8,8 @@ import {
 } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Header from "./components/Header";
-import SportPage from "./pages/Sport";
-import CartoonPage from "./pages/Cartoon";
-import MoviePage from "./pages/Movie";
-import TvPage from "./pages/Tv";
+import Channels from "./pages/Channels";
+import MovieLibrary from "./pages/MovieLibrary";
 
 import "./App.css";
 
@@ -64,11 +62,11 @@ export default function App() {
           <Container maxWidth="xl" id="main" className={classes.main}>
             <main className={clsx(classes.content)}>
               <Switch>
-                <Route path="/" exact component={TvPage} />
-                <Route path="/tv" exact component={TvPage} />
-                <Route path="/sport" exact component={SportPage} />
-                <Route path="/movie" exact component={MoviePage} />
-                <Route path="/cartoon" exact component={CartoonPage} />
+                <Route path="/" exact component={() => <Channels source="tv"/>} />
+                <Route path="/tv" exact component={() => <Channels source="tv"/>} />
+                <Route path="/sport" exact component={() => <Channels source="sport"/>} />
+                <Route path="/movie" exact component={() => <MovieLibrary source="movie"/>} />
+                <Route path="/cartoon" exact component={() => <MovieLibrary source="cartoon"/>} />
               </Switch>
             </main>
           </Container>

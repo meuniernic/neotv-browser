@@ -30,7 +30,6 @@ class Header extends React.Component {
   componentDidMount() {
     if (this.props.history) {
       var index = routes.indexOf(this.props.history.location.pathname);
-      console.log(this.props.history.location.pathname);
       if (index<0) 
         index = 0;
       this.setState({menuItem: index});   
@@ -144,7 +143,7 @@ class Header extends React.Component {
             <div className={this.props.classes.filler}></div>
             <div className={this.props.classes.root} />
            
-            <IconButton aria-label={t("application.dark")} onClick={this.toggleDarkChecked} size="medium" color={this.state.darkChecked?"secondary":""}>
+            <IconButton aria-label={t("application.dark")} onClick={this.toggleDarkChecked} size="medium" color={this.state.darkChecked?"secondary":"default"}>
                 <Brightness2  />
             </IconButton>
           </Toolbar>
