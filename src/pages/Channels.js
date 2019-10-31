@@ -52,7 +52,7 @@ class Channels extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div id="cards">
+        <div id="cards" className={this.props.classes.cards}>
           <Suspense fallback="Loading...">
             <Grid
               container
@@ -67,11 +67,9 @@ class Channels extends React.Component {
                 return (
                   <Grid item key={labelId}>
                     <ChannelCard
-                      imageUrl={value.image}
-                      imageTitle={value.title}
-                      cardTitle={value.title}
-                      cardText={value.title}
-                      link={value.url}
+                      cover={value.image}
+                      title={value.title}
+                      media={value.url}
                     />
                   </Grid>
                 );

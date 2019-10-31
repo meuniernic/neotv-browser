@@ -3,13 +3,13 @@ import { fade, withStyles } from "@material-ui/core/styles";
 import { withTranslation } from "react-i18next";
 import { withRouter } from "react-router-dom";
 import { blue } from "@material-ui/core/colors";
-import {AppBar, Tabs, Tab, Toolbar, IconButton, Typography, InputBase} from "@material-ui/core";
+import {AppBar, Tabs, Tab, Toolbar, IconButton, Typography, InputBase, Badge, Avatar} from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {HomeOutlined,SportsSoccer,Movie,Reddit,Search,Tv, Brightness2} from "@material-ui/icons";
 import * as d3 from "d3";
 import * as util from "../util.js";
 
-const routes = ["/tv", "/sport", "/movie", "/cartoon"];
+const ROUTES = ["/tv", "/sport", "/movie/fr","/movie/en", "/cartoon/fr", "/cartoon/en"];
 
 class Header extends React.Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class Header extends React.Component {
 
   componentDidMount() {
     if (this.props.history) {
-      var index = routes.indexOf(this.props.history.location.pathname);
+      var index = ROUTES.indexOf(this.props.history.location.pathname);
       if (index<0) 
         index = 0;
       this.setState({menuItem: index});   
@@ -38,12 +38,12 @@ class Header extends React.Component {
 
   handleMenuItemChange = (event, newValue) => {
     this.setState({ menuItem: newValue });
-    this.navigate(routes[newValue]);
+    this.navigate(ROUTES[newValue]);
   };
 
   handleNavigateHome = (event) => {
     this.setState({ menuItem: 0 });
-    this.navigate(routes[0]);
+    this.navigate(ROUTES[0]);
   };
 
   navigate(route) {
@@ -118,24 +118,50 @@ class Header extends React.Component {
                 aria-label="scrollable prevent tabs example"
               >
                 <Tab
-                  icon={<Tv />}
+                  icon={<Tv className={this.props.classes.iconTab}/>}
                   label={t("menu.tv")}
                   aria-label="TV"
                 >
                 </Tab>
                 <Tab
-                  icon={<SportsSoccer />}
+                  icon={<SportsSoccer className={this.props.classes.iconTab}/>}
                   label={t("menu.sport")}
                   aria-label="football"
                 />
                 <Tab
-                  icon={<Movie />}
-                  label={t("menu.movie")}
+                  icon={
+                    <Badge overlap="circle" badgeContent={<Avatar src="/images/flag/FR.png" className={this.props.classes.flag}/>} anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}>
+                      <Movie className={this.props.classes.iconTab}/>
+                    </Badge>
+                  }
+                  label={t("menu.movieFr")}
                   aria-label="movies"
                 />
                 <Tab
-                  icon={<Reddit />}
-                  label={t("menu.cartoon")}
+                  icon={
+                    <Badge overlap="circle" badgeContent={<Avatar src="/images/flag/EN.png" className={this.props.classes.flag}/>} anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}>
+                      <Movie className={this.props.classes.iconTab}/>
+                    </Badge>
+                  }
+                  label={t("menu.movieEn")}
+                  aria-label="movies"
+                />
+                <Tab
+                  icon={
+                    <Badge overlap="circle" badgeContent={<Avatar src="/images/flag/FR.png" className={this.props.classes.flag}/>} anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}>
+                      <Reddit className={this.props.classes.iconTab}/>
+                    </Badge>
+                }
+                  label={t("menu.cartoonFr")}
+                  aria-label="cartoon"
+                />
+                <Tab
+                  icon={
+                    <Badge overlap="circle" badgeContent={<Avatar src="/images/flag/EN.png" className={this.props.classes.flag}/>} anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}>
+                      <Reddit className={this.props.classes.iconTab}/>
+                    </Badge>
+                }
+                  label={t("menu.cartoonEn")}
                   aria-label="cartoon"
                 />
               </Tabs>
@@ -162,6 +188,15 @@ return {
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     backgroundColor: blue[900]
+  },
+  iconTab: {
+    width: "1.2em",
+    height: "1.2em",
+  },
+  flag: {
+    width: 15,
+    height: 15,
+    marginRight: -15
   },
   hide: {
     display: "none"

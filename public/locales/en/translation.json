@@ -7,9 +7,11 @@
      "application.loadMore" : "Load more",
 
      "menu.tv": "TV",
-     "menu.movie": "Movies",
+     "menu.movieFr": "French Movies",
+     "menu.movieEn": "English Movies",
      "menu.sport": "Sports",
-     "menu.cartoon": "Cartoons",
+     "menu.cartoonFr": "French Cartoons",
+     "menu.cartoonEn": "EnglishCartoons",
 
      "media.launch": "Launch",
      "media.preview": "Preview",

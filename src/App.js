@@ -65,8 +65,10 @@ export default function App() {
                 <Route path="/" exact component={() => <Channels source="tv"/>} />
                 <Route path="/tv" exact component={() => <Channels source="tv"/>} />
                 <Route path="/sport" exact component={() => <Channels source="sport"/>} />
-                <Route path="/movie" exact component={() => <MovieLibrary source="movie"/>} />
-                <Route path="/cartoon" exact component={() => <MovieLibrary source="cartoon"/>} />
+                <Route path="/movie/fr" exact component={() => <MovieLibrary source="movie" language="fr"/>} />
+                <Route path="/movie/en" exact component={() => <MovieLibrary source="movie" language="en"/>} />
+                <Route path="/cartoon/fr" exact component={() => <MovieLibrary source="cartoon" language="fr"/>} />
+                <Route path="/cartoon/en" exact component={() => <MovieLibrary source="cartoon" language="en"/>} />
               </Switch>
             </main>
           </Container>

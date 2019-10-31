@@ -12,11 +12,13 @@ import * as util from "../util.js";
 class MovieLibrary extends React.Component {
   static propTypes = {
     // ...prop type definitions here
-    source: PropTypes.oneOf(["cartoon", "movie"]).isRequired
+    source: PropTypes.oneOf(["cartoon", "movie"]).isRequired,
+    language: PropTypes.oneOf(["fr", "en"]).isRequired,
   };
 
   static defaultProps = {
-    source: "movie"
+    source: "movie",
+    language: "fr"
   };
 
   constructor(props) {
@@ -48,11 +50,11 @@ class MovieLibrary extends React.Component {
   getLibraryUrl = () => {
     switch (this.props.source) {
       case "movie":
-        return util.getMovieUrl();
+        return util.getMovieUrl(this.props.language);
       case "cartoon":
-        return util.getCartoonUrl();
+        return util.getCartoonUrl(this.props.language);
       default:
-        return util.getCartoonUrl();
+        return util.getCartoonUrl(this.props.language);
     }
   };
 

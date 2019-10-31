@@ -1,50 +1,87 @@
-import React from 'react';
-import { useTranslation } from "react-i18next";
-import { makeStyles } from '@material-ui/core/styles';
-import OpenInNew from '@material-ui/icons/OpenInNew';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import { withStyles } from "@material-ui/core/styles";
+import { withTranslation } from "react-i18next";
+import OpenInNew from "@material-ui/icons/OpenInNew";
+import {
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography
+} from "@material-ui/core";
 
-const useStyles = makeStyles({
-  card: {
-    width: 250,
-  },
-  media: {
-    height: 150,
-  },
-});
+class ChannelCard extends React.Component {
+  static propTypes = {
+    // ...prop type definitions here
+    variant: PropTypes.oneOf(["simple", "full"]).isRequired,
+    cover: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    callback: PropTypes.func,
+    media: PropTypes.string
+  };
 
-export default function MediaCard(props) {
-  const classes = useStyles();
-  const { t } = useTranslation();
+  static defaultProps = {
+    variant: "simple"
+  };
 
-  return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia 
-          className={classes.media}
-          image={props.imageUrl}
-          title={props.imageTitle}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.cardTitle}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.cardText}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions >
-        <Button size="small"  variant="contained" color="primary"  href={props.link} className={classes.actionButton} startIcon={<OpenInNew />} target="_blank">
-          {t("media.launch")}
-        </Button>
-      </CardActions>
-    </Card>
-  );
+  constructor(props) {
+    super(props);
+    this.isSimple = this.isSimple.bind(this);
+  }
+
+  isSimple = () => {
+    return this.props.variant === "simple";
+  };
+
+  render() {
+    const { t } = this.props;
+    return (
+      <Card className={this.props.classes.card} raised>
+        <CardActionArea>
+          <CardMedia
+            className={this.props.classes.media}
+            image={this.props.cover}
+            title={this.props.title}
+
+          />
+          <CardContent className={clsx(this.isSimple() && this.props.classes.hide)}>
+            <Typography gutterBottom variant="h5">
+              {this.props.title}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions className={clsx(this.isSimple() && this.props.classes.hide)}>
+          <Button
+            size="small"
+            variant="contained"
+            color="primary"
+            href={this.props.media}
+            className={this.props.classes.actionButton}
+            startIcon={<OpenInNew />}
+            target="_blank"
+          >
+            {t("media.launch")}
+          </Button>
+        </CardActions>
+      </Card>
+    );
+  }
 }
+
+export default withStyles(function(theme) {
+  return {
+    hide: {
+      display: "none"
+    },
+    card: {
+      width: 280
+    },
+    media: {
+      height: 200
+    }
+  };
+})(withTranslation("translation")(ChannelCard));

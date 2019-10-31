@@ -7,9 +7,11 @@
    "application.loadMore" : "Voir plus",
 
      "menu.tv": "TV",
-     "menu.movie": "Films",
+     "menu.movieFr": "Films Français",
+     "menu.movieEn": "Films Anglais",
      "menu.sport": "Sports",
-     "menu.cartoon": "Animés",
+     "menu.cartoonFr": "Animés Français",
+     "menu.cartoonEn": "Animés Anglais",
 
      "media.launch": "Démarrer",
      "media.preview": "Aperçu",

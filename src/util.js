@@ -2,7 +2,11 @@ import config from './config/config.js';
 import Fuse from "fuse.js";
 
 function buildUrl(category) {
-    return config.neotv.baseurl + category + '?' + config.neotv.code_param + '=' + config.neotv.key;
+    return buildLanguageUrl(category, '');
+}
+
+function buildLanguageUrl(category, language) {
+    return config.neotv.baseurl + category + '?' + config.neotv.code_param + '=' + config.neotv.key + '&' + config.neotv.language_param + '=' + language;
 }
 
 export function fuseSearchIcon(data, keyword) {
@@ -20,22 +24,22 @@ export function wrapText(text) {
 }
 
 export function getSportUrl() {
-    //return buildUrl(properties.urls.sports);
+    //return buildUrl(properties.urls.sport);
     return "http://localhost:3000/sports.json";
 }
 
-export function getMovieUrl() {
-    //return buildUrl(properties.urls.movies);
+export function getMovieUrl(language) {
+    //return buildLanguageUrl(properties.urls.movie);
     return "http://localhost:3000/movies.json";
 }
 
-export function getCartoonUrl() {
-    //return buildUrl(properties.urls.cartoons);
+export function getCartoonUrl(language) {
+    //return buildLanguageUrl(properties.urls.cartoon);
     return "http://localhost:3000/cartoons.json";
 }
 
 export function getTvUrl() {
-    //return buildUrl(properties.urls.);
+    //return buildUrl(properties.urls.tv);
     return "http://localhost:3000/tv.json";
 }
 

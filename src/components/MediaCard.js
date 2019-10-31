@@ -35,7 +35,6 @@ class MediaCard extends React.Component {
     date: PropTypes.string,
     description: PropTypes.string,
     media: PropTypes.string
-
   };
   
   static defaultProps = {
@@ -83,7 +82,6 @@ class MediaCard extends React.Component {
               muted
               autoPlay={this.state.preview}
               width="100%"
-              preload="auto"
             >
               <source src={this.props.media} type="video/mp4" />
             </video>
@@ -134,7 +132,7 @@ class MediaCard extends React.Component {
             <Typography paragraph variant="overline">
               {t("media.summary")}
             </Typography>
-            <Typography paragraph>{this.props.cardText}</Typography>
+            <Typography paragraph>{this.props.description}</Typography>
           </CardContent>
         </Collapse>
       </Card>
@@ -146,7 +144,7 @@ class MediaCard extends React.Component {
 export default withStyles(function(theme) {
   return {
     card: {
-      width: 310
+      width: 300
     },
     media: {
       height: 330
