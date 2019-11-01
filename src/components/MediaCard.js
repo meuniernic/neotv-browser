@@ -86,11 +86,6 @@ class MediaCard extends React.Component {
               <source src={this.props.media} type="video/mp4" />
             </video>
           </CardMedia>
-          <CardContent className={clsx(this.props.classes.text, this.isSimple() && this.props.classes.hide)}>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {util.wrapText(this.props.description)}
-            </Typography>
-          </CardContent>
         </CardActionArea>
 
         <CardActions disableSpacing className={clsx(this.isSimple() && this.props.classes.hide)}>
@@ -132,7 +127,7 @@ class MediaCard extends React.Component {
             <Typography paragraph variant="overline">
               {t("media.summary")}
             </Typography>
-            <Typography paragraph>{this.props.description}</Typography>
+            <Typography variant="body2" color="textSecondary" component="p">{this.props.description}</Typography>
           </CardContent>
         </Collapse>
       </Card>
