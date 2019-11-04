@@ -1,5 +1,5 @@
 const neotv = {
-    baseurl: "https://neotv.cho20.synology.me/rest/",
+    baseurl: "http://localhost:8080/rest/",
     urls: {
         sport: "sport",
         movie: "movies",

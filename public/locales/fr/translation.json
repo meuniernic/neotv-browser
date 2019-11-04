@@ -17,5 +17,7 @@
      "media.preview": "Aperçu",
      "media.stop": "Arrêter",
      "media.summary": "Résumé",
-     "media.showMore": "Voir plus"
+     "media.showMore": "Voir plus",
+
+     "library.noMoreItems": "Fin de la liste..."
 }

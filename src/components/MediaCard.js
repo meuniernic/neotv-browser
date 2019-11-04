@@ -45,7 +45,8 @@ class MediaCard extends React.Component {
     super(props);
     this.state = {
       expanded: false,
-      preview: false
+      preview: false,
+      media : null
     };
 
     this.handleExpand = this.handleExpand.bind(this);
@@ -62,7 +63,8 @@ class MediaCard extends React.Component {
   };
 
   handlePreview = () => {
-    this.setState({ preview: !this.state.preview});
+    this.setState({ preview: !this.state.preview,
+                  media: !this.state.preview?this.props.media:null});
   };
 
   render() {
@@ -82,8 +84,8 @@ class MediaCard extends React.Component {
               muted
               autoPlay={this.state.preview}
               width="100%"
+              src={this.state.media}
             >
-              <source src={this.props.media} type="video/mp4" />
             </video>
           </CardMedia>
         </CardActionArea>

@@ -1,9 +1,10 @@
 import React, { Suspense } from "react";
 import { withStyles } from "@material-ui/core/styles";
+import { withTranslation } from "react-i18next";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import { Grid, IconButton } from "@material-ui/core";
-import { Close } from "@material-ui/icons";
+import { Grid, IconButton, CircularProgress, Snackbar, SnackbarContent } from "@material-ui/core";
+import { Close, Info } from "@material-ui/icons";
 import { grey } from "@material-ui/core/colors";
 import MediaCard from "../components/MediaCard";
 //import * as d3 from "d3";
@@ -63,8 +64,7 @@ class MovieLibrary extends React.Component {
       // Checks that the page has scrolled to the bottom
       //window.innerHeight + document.documentElement.scrollTop
       //=== document.documentElement.offsetHeight
-      console.log(window.innerHeight + document.documentElement.scrollTop);
-      console.log(document.documentElement.offsetHeight);
+      // TODO  why comparison is not working when using === ??
       if (
         window.innerHeight + document.documentElement.scrollTop
         > document.documentElement.offsetHeight
@@ -99,13 +99,12 @@ class MovieLibrary extends React.Component {
 
   loadLibrary = () => {
     if (this.state.library.length === 0) {
-      console.log("Initial loading");
       // Initial loading of full list
       this.setState({ isLoading: true }, () => {
         request
           .get(this.getLibraryUrl())
           .then((results) => {
-            const fullData = results.body.streams;
+            const fullData = results.body[0].streams;
             const nextDisplay = fullData.slice(0, PAGE_SIZE);
             
             // Merges the next users into our existing users
@@ -150,6 +149,13 @@ class MovieLibrary extends React.Component {
     }  
   }
 
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    //setOpen(false);
+  };
+
 
   componentWillMount() {
     // Loads library on initial load
@@ -168,6 +174,7 @@ class MovieLibrary extends React.Component {
   }
 */
   render() {
+    const { t } = this.props;
     return (
       <React.Fragment>
         <div
@@ -231,11 +238,28 @@ class MovieLibrary extends React.Component {
           </div>
         }
         {this.state.isLoading &&
-          <div>Loading...</div>
+          <div className={this.props.classes.loader}>
+            <CircularProgress />
+          </div>
         }
+
         {!this.state.hasMore &&
-          <div>You did it! You reached the end!</div>
+          <div className={this.props.classes.loader}>
+            <Info/>{t("library.noMoreItems")}
+          </div>
         }
+        <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={!this.state.hasMore}
+        autoHideDuration={6000}
+        //onClose={handleClose}
+      >
+        <SnackbarContent variant="success" message={t("library.noMoreItems")} />
+      </Snackbar>
+
         </div>
       </React.Fragment>
     );
@@ -244,6 +268,11 @@ class MovieLibrary extends React.Component {
 
 export default withStyles(function(theme) {
   return {
+    loader: {
+      textAlign: "center",
+      padding: 10,
+      width: "100%"
+    },
     player: {
       width: "100%"
     },
@@ -258,4 +287,4 @@ export default withStyles(function(theme) {
       display: "none"
     }
   };
-})(MovieLibrary);
+})(withTranslation("translation")(MovieLibrary));

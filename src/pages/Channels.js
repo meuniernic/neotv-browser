@@ -62,7 +62,7 @@ class Channels extends React.Component {
     // Re-render our component.
     Promise.all([d3.json(this.getChannelsUrl())])
       .then(([channels]) => {
-        this.setState({ channels: channels.streams });
+        this.setState({ channels: channels[0].streams });
       })
       .catch(err => console.log("Error loading channels, ", err));
   }

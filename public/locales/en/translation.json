@@ -17,6 +17,8 @@
      "media.preview": "Preview",
      "media.stop": "Stop",
      "media.summary": "Summary",
-     "media.showMore": "Show more"
+     "media.showMore": "Show more",
+
+     "library.noMoreItems": "No more items..."
 
 }
